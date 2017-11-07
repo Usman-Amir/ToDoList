@@ -13,7 +13,9 @@ export default class App extends Component {
   constructor(props){
     super(props)
 
+    
     let myList=  [{title: 'Title Text', key: 'item1'}]
+  
     this.state = {
       username: '',
       password: ''
@@ -22,21 +24,24 @@ export default class App extends Component {
   }
 
   _handlePress() {
-    let setlist = this.state.mytest;
-     alert(setlist);
-     alert(this.myList);
+    var listObj = {"key": 1, "value":this.state.mytest}
+    myData.push(listObj)
+    this.setState({myData})
+     
+   
   }
   render() {
     return (
      
 
       <View style={styles.container}>
+
        <FlatList data={this.myList}
       renderItem={({item}) => <Text>{item.name}</Text>} />
 
 <FlatList  
-  data={getData(5)}
-  renderItem={({item}) => <Text>title={item.title} </Text>}
+  data={this.state.myData}
+  renderItem={({item}) => <Text>title={item.value} </Text>}
 />
        <TextInput
       onChangeText={(mytest) => this.setState({mytest})}
@@ -49,11 +54,17 @@ title="Press"/>
     );
   }
 }
+function getList()
+{
+  var listObj = {"key": 1, "value":this.mytest}
+  return this.state.myData.push(listObj)
+}
 function getData(number) {
-  let data = [];
+  var data = [];
   for(var i=0; i<number; ++i)
   {
-    data.push("" + i);
+    var myObj = {"key":i,"value": this.mytest}
+    data.push(myObj);
   }
   
   return data;
@@ -63,7 +74,7 @@ function getData(number) {
 //   let thistest = test
 //   alert(thistest); 
 // }
-
+var myData=[{"key": 1, "value":"usman"}]
 const styles = StyleSheet.create({
   container: {
     flex: 1,

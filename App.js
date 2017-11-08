@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   StyleSheet,
   TextInput,
@@ -7,89 +7,86 @@ import {
   Text,
   Button,
   FlatList
-} from 'react-native';
+} from "react-native";
 
 export default class App extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
 
-    
-    let myList=  [{title: 'Title Text', key: 'item1'}]
-  
+    let myList = [{ title: "Title Text", key: "item1" }];
+
     this.state = {
-      username: '',
-      password: ''
-      
-    }
+      username: "",
+      password: "",
+      myData: [{ key: 1, value: "usman" }]
+    };
   }
 
   _handlePress() {
-    var listObj = {"key": 1, "value":this.state.mytest}
-    myData.push(listObj)
-    this.setState({myData})
-     
-   
+    this.setState({
+      myData: [
+        ...this.state.myData,
+        { key: this.state.myData.length + 1, value: this.state.mytest }
+      ]
+    });
   }
+
   render() {
     return (
-     
-
       <View style={styles.container}>
-
-       <FlatList data={this.myList}
-      renderItem={({item}) => <Text>{item.name}</Text>} />
-
-<FlatList  
-  data={this.state.myData}
-  renderItem={({item}) => <Text>title={item.value} </Text>}
-/>
-       <TextInput
-      onChangeText={(mytest) => this.setState({mytest})}
-    />
-<Button onPress={()=> this._handlePress()}
-Text="Press Me" 
-title="Press"/>
-
+        <FlatList
+          data={this.state.myData}
+          renderItem={({ item }) => <Text>title={item.value} </Text>}
+          style={{
+            flex: 80
+          }}
+        />
+        <TextInput
+          onChangeText={val =>
+            this.setState({
+              mytest: val
+            })}
+          style={{ flex: 10, width: 100 }}
+        />
+        <Button
+          onPress={() => this._handlePress()}
+          Text="Press Me"
+          title="Press"
+          style={{ flex: 10 }}
+        />
       </View>
     );
   }
 }
-function getList()
-{
-  var listObj = {"key": 1, "value":this.mytest}
-  return this.state.myData.push(listObj)
+function getList() {
+  var listObj = { key: 1, value: this.mytest };
+  return this.state.myData.push(listObj);
 }
 function getData(number) {
   var data = [];
-  for(var i=0; i<number; ++i)
-  {
-    var myObj = {"key":i,"value": this.mytest}
+  for (var i = 0; i < number; ++i) {
+    var myObj = { key: i, value: this.mytest };
     data.push(myObj);
   }
-  
+
   return data;
 }
-// function onPressLearnMore()
-// {
-//   let thistest = test
-//   alert(thistest); 
-// }
-var myData=[{"key": 1, "value":"usman"}]
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    flex: 90,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF"
   },
   welcome: {
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+    textAlign: "center",
+    margin: 10
   },
   instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5
+  }
 });

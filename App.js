@@ -5,10 +5,10 @@ import {
   View,
   ScrollView,
   Text,
-  Button,
   FlatList,
   AsyncStorage
 } from "react-native";
+import { Button } from 'react-native-elements';
 
 export default class App extends Component {
   constructor(props) {

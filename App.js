@@ -5,10 +5,12 @@ import {
   View,
   ScrollView,
   Text,
-  Button,
+  
   FlatList,
   AsyncStorage
 } from "react-native";
+import {Button} from "react-native-elements";
+import { TextButton, RaisedTextButton } from 'react-native-material-buttons';
 
 export default class App extends Component {
   constructor(props) {
@@ -24,7 +26,7 @@ export default class App extends Component {
   }
 
   _handlePress() {
-    AsyncStorage.setItem((this.state.myData.length + 1).toString(), this.state.mytest);
+    AsyncStorage.setItem(("testitem").toString(), this.state.mytest);
     this.setState({
       myData: [
         
@@ -32,16 +34,27 @@ export default class App extends Component {
         { key: this.state.myData.length + 1, value: this.state.mytest }
       ]
     });
-    console.log(AsyncStorage.getItem("1"));
-    AsyncStorage.getItem("1").then((asd) => {
-      alert(asd); // you will need use the alert in here because this is the point in the execution which you receive the value from getItem.
-    // you could do your authentication and routing logic here but I suggest that you place them in another function and just pass the function as seen in the example below.
-});
+
+    Promise.all(AsyncStorage.getItem("testitem")
+  .then(k=> console.log(k)));
+
+  //   Promise.all(AsyncStorage.getAllKeys()
+  // .then(ks=>ks.map(
+  //   k=>
+  //  console.log( AsyncStorage.getItem(k))
+  // )))
+
+
+//     AsyncStorage.getItem("testitem").then((asd) => {
+//       alert(asd); // you will need use the alert in here because this is the point in the execution which you receive the value from getItem.
+//     // you could do your authentication and routing logic here but I suggest that you place them in another function and just pass the function as seen in the example below.
+// });
   }
 
   render() {
     return (
       <View style={styles.container}>
+      <RaisedTextButton title='touch me' />
        <TextInput
           onChangeText={val =>
             this.setState({

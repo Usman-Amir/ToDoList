@@ -5,12 +5,12 @@ import {
   View,
   ScrollView,
   Text,
-  
   FlatList,
   AsyncStorage
 } from "react-native";
 import {Button} from "react-native-elements";
 import { TextButton, RaisedTextButton } from 'react-native-material-buttons';
+
 
 export default class App extends Component {
   constructor(props) {

@@ -1,0 +1,9 @@
+language: android
+sudo: false
+before_install:
+- nvm install 6
+- node --version
+install:
+- yarn install
+cache:
+yarn: true
